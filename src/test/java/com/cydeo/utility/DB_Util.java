@@ -6,7 +6,6 @@ import java.util.List;
 
 public class DB_Util {
 
-    // declaring at class level so all methods can access
     private static Connection con;
     private static Statement stm;
     private static ResultSet rs;
@@ -22,30 +21,18 @@ public class DB_Util {
         }
     }
 
-
-    /**
-     * Create connection method , just checking one connection successful or not
-     */
     public static void createConnection() {
 
-        String url = ConfigReader.read("hr.database.url");
-        String username = ConfigReader.read("hr.database.username");
-        String password = ConfigReader.read("hr.database.password");
-//        try {
-//            con = DriverManager.getConnection(url , username, password) ;
-//            System.out.println("CONNECTION SUCCESSFUL");
-//        } catch (Exception e) {
-//            System.out.println("CONNECTION HAS FAILED " + e.getMessage() );
-//        }
+        String url = ConfigReader.read("library2.database.url");
+        String username = ConfigReader.read("library2.database.username");
+        String password = ConfigReader.read("library2.database.password");
         createConnection(url, username, password);
 
     }
 
 
     public static void destroy() {
-        // WE HAVE TO CHECK IF WE HAVE THE VALID OBJECT FIRST BEFORE CLOSING THE RESOURCE
-        // BECAUSE WE CAN NOT TAKE ACTION ON AN OBJECT THAT DOES NOT EXIST
-        try {
+       try {
             if (rs != null) rs.close();
             if (stm != null) stm.close();
             if (con != null) con.close();

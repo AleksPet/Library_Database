@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
                     "json:target/cucumber.json",
                     "me.jvt.cucumber.report.PrettyReports:target"
             },
-            dryRun = true
-            //,tags = "@us_10"
+            dryRun = false
+            ,tags = "@db"
     )
     public class TestRunner {
     }

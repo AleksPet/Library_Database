@@ -10,8 +10,5 @@ public class BrowserUtil {
         }
     }
 
-    public static void checkForDuplicates(){
 
-
-    }
 }

@@ -1,5 +1,6 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.utility.ConfigReader;
 import com.cydeo.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,19 +20,18 @@ public class Us01StepDefs {
         DB_Util.createConnection();
 
     }
+
     @When("Execute query to get all IDs from users")
     public void execute_query_to_get_all_i_ds_from_users() {
     DB_Util.runQuery("select id from users");
-     actualList=  DB_Util.getColumnDataAsList(1);
+    actualList=  DB_Util.getColumnDataAsList(1);
     expectedList= new LinkedHashSet<>();
     expectedList.addAll(actualList);
-
     }
+
     @Then("verify the result set")
     public void verify_the_result_set() {
         Assertions.assertEquals(expectedList.size(),actualList.size());
-
-
     }
 
 
