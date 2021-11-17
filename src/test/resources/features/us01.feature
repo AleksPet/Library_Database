@@ -11,7 +11,7 @@ Feature: As a data consumer, I want the user information are stored in mySql DB
   Scenario: verify users table columns
     When Execute query to get all columns
     Then verify the below columns are listed in result:
-  |Id|
+  |id|
   |full_name|
   |email|
   |password |

@@ -98,7 +98,90 @@ public class DB_Util {
         }
 
     }
+
+    public static int getColumnCount(){
+
+        int columnCount = 0 ;
+
+        try {
+            columnCount = rsmd.getColumnCount();
+
+        } catch (Exception e) {
+            System.out.println("ERROR OCCURRED WHILE GETTING COLUMN COUNT " + e.getMessage() );
+        }
+
+        return columnCount ;
+
+    }
+
+    public static List<String> getRowDataAsList( int rowNum ){
+
+        List<String> rowDataAsLst = new ArrayList<>();
+        int colCount =  getColumnCount() ;
+
+        try {
+            rs.absolute( rowNum );
+
+            for (int colIndex = 1; colIndex <= colCount ; colIndex++) {
+
+                String cellValue =  rs.getString( colIndex ) ;
+                rowDataAsLst.add(   cellValue  ) ;
+
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("ERROR OCCURRED WHILE getRowDataAsList " + e.getMessage() );
+        }finally {
+            resetCursor();
+        }
+
+
+        return rowDataAsLst ;
+    }
+
+    public static List<String> getAllColumnNamesAsList(){
+
+        List<String> columnNameLst = new ArrayList<>();
+
+        try {
+            for (int colIndex = 1; colIndex <= getColumnCount() ; colIndex++) {
+                String columnName =  rsmd.getColumnName(colIndex) ;
+                columnNameLst.add(columnName) ;
+            }
+        }catch (Exception e){
+            System.out.println("ERROR OCCURRED WHILE getAllColumnNamesAsList "+ e.getMessage());
+        }
+
+        return columnNameLst ;
+
+    }
+
+    public static String getCellValue(int rowNum , int columnIndex) {
+
+        String cellValue = "" ;
+
+        try {
+            rs.absolute(rowNum) ;
+            cellValue = rs.getString(columnIndex ) ;
+
+        } catch (Exception e) {
+            System.out.println("ERROR OCCURRED WHILE getCellValue " + e.getMessage() );
+        }finally {
+            resetCursor();
+        }
+        return cellValue ;
+
+    }
+
+
+
+
+
+
 }
+
+
 
 
 
