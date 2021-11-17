@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-
 public class Us02StepDefs {
 
     @When("I execute query to inner join users and book_borrow on Id")
